@@ -25,6 +25,13 @@ public class CartService {
     private final UserRepository userRepository;
     private final CartMapper cartMapper;
 
+    public void createCartForUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        Cart cart = new Cart(null, user, new ArrayList<>());
+        cartRepository.save(cart);
+    }
+
     public CartDTO addToCart(Long userId, Long productId, Integer quantity){
         User user = userRepository.findById(userId)
                 .orElseThrow(()->new ResourceNotFoundException("User not found"));

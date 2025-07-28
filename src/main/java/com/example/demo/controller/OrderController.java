@@ -50,6 +50,4 @@ public class OrderController {
         OrderDTO updatedOrder = orderService.updateOrderStatus(orderId, status);
         return ResponseEntity.ok(updatedOrder);
     }
-
-
 }
