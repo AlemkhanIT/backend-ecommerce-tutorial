@@ -1,0 +1,54 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'api-gateway'
+    static_configs:
+      - targets: ['api-gateway:8080']
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+
+  - job_name: 'user-service'
+    static_configs:
+      - targets: ['user-service:8081']
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+
+  - job_name: 'product-service'
+    static_configs:
+      - targets: ['product-service:8082']
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+
+  - job_name: 'cart-service'
+    static_configs:
+      - targets: ['cart-service:8083']
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+
+  - job_name: 'order-service'
+    static_configs:
+      - targets: ['order-service:8084']
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+
+  - job_name: 'notification-service'
+    static_configs:
+      - targets: ['notification-service:8085']
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+
+  - job_name: 'review-service'
+    static_configs:
+      - targets: ['review-service:8086']
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
